@@ -1,3 +1,2 @@
-p1/Proto4/target/
-p1/Proto4/.idea/
-*.iml
+target/
+.idea/
