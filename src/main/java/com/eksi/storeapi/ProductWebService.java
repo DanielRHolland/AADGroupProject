@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductWebService {
     @RequestMapping("/quantity")
     public int quantity(@RequestParam(value="id", defaultValue="1") String id) {
-        return Integer.parseInt(id);
+        return ApplicationContext.productsBl().getQuantity("does not matter");
     }
 }
