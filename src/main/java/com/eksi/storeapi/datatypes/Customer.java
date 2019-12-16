@@ -8,15 +8,15 @@ public class Customer {
         return customerId;
     }
     
-    public String getbudgetCode(){
+    public String getBudgetCode(){
         return budgetCode;
     }
     
-    public void setbudgetCode(final String budgetCode){
+    public void setBudgetCode(final String budgetCode){
         this.budgetCode = budgetCode;
     }
+
     public Customer(final String id) {
-        
         this.customerId = id;
     }
 }

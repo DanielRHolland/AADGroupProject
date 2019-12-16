@@ -1,25 +1,79 @@
 
 package com.eksi.storeapi.datatypes;
-//todo add setters, remove default values
+
+import java.util.List;
+
 public class ProductInformation {
- private String id;
- private String name = "default name";
- private String imageUrl = "https://someurl.something.some.com/someimage.jpg";
- private String locationName = "Stores";
-// private List<Warning> warnings;
- private Long expiryDate = new Long(1609459200);// 01/01/2021 UTC 12:00am
- private Double costPrice = new Double(0.0);
- private String description = "Product description"; 
+    private String id;
+    private String name;
+    private String imageUrl;
+    private String locationName;
+    private List<Warning> warnings;
+    private Long expiryDate;
+    private Double costPrice;
+    private String description;
 
- public String getId(){return id;}
- public String getLocationName(){return locationName;}
-// public List<Warning> getWarnings(){return warnings;}
- public Long getExpiryDate(){return expiryDate;}
- public Double getCostPrice(){return costPrice;}
- public String getDescription(){return description;}
+    public String getId() {
+        return id;
+    }
 
- public ProductInformation(final String id) {
-    this.id = id;
- }
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public List<Warning> getWarnings() {
+        return warnings;
+    }
+
+    public void setWarnings(List<Warning> warnings) {
+        this.warnings = warnings;
+    }
+
+    public Long getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(Long expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public Double getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(Double costPrice) {
+        this.costPrice = costPrice;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ProductInformation(final String id) {
+        this.id = id;
+    }
 }
