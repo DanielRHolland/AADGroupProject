@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.eksi.storeapi.datatypes.Customer;
-import com.eksi.storeapi.ApplicationContext;
 
 @RestController
 @RequestMapping("customer")

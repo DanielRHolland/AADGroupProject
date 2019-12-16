@@ -15,6 +15,7 @@ public class Customer {
     public void setbudgetCode(final String budgetCode){
         this.budgetCode = budgetCode;
     }
+    
     public Customer(final String id) {
         
         this.customerId = id;
