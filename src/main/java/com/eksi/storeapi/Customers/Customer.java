@@ -12,7 +12,6 @@ public class Customer {
     private String username;
     private String passwordHash;
     private int privLevel;
-
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
