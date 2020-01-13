@@ -1,9 +1,11 @@
 
-package com.eksi.storeapi.datatypes;
+package com.eksi.storeapi.Products;
+
+import com.eksi.storeapi.Warning.Warning;
 
 import java.util.List;
 
-public class ProductInformation {
+public class Product {
     private String id;
     private String name;
     private String imageUrl;
@@ -73,7 +75,7 @@ public class ProductInformation {
         this.description = description;
     }
 
-    public ProductInformation(final String id) {
+    public Product(final String id) {
         this.id = id;
     }
 }

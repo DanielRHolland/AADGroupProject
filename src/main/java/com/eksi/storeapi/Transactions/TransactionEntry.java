@@ -1,4 +1,4 @@
-package com.eksi.storeapi.datatypes;
+package com.eksi.storeapi.Transactions;
 
 public class TransactionEntry
 { 

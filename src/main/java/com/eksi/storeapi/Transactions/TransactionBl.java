@@ -1,6 +1,4 @@
-package com.eksi.storeapi.bl;
-
-import com.eksi.storeapi.datatypes.Transaction;
+package com.eksi.storeapi.Transactions;
 
 public interface TransactionBl {
     Transaction getTransaction(String transactionId);

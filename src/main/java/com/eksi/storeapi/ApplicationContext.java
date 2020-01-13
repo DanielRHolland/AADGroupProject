@@ -1,11 +1,11 @@
 package com.eksi.storeapi;
 
-import com.eksi.storeapi.bl.ProductsBl;
-import com.eksi.storeapi.bl.CustomersBl;
-import com.eksi.storeapi.bl.TransactionBl;
-import com.eksi.storeapi.blimpl.ProductsBlImpl;
-import com.eksi.storeapi.blimpl.CustomersBlImpl;
-import com.eksi.storeapi.blimpl.TransactionBlImpl;
+import com.eksi.storeapi.Products.ProductsBl;
+import com.eksi.storeapi.Customers.CustomersBl;
+import com.eksi.storeapi.Transactions.TransactionBl;
+import com.eksi.storeapi.Products.ProductsBlImpl;
+import com.eksi.storeapi.Customers.CustomersBlImpl;
+import com.eksi.storeapi.Transactions.TransactionBlImpl;
 
 public class ApplicationContext {
     static public ProductsBl productsBl() {

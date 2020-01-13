@@ -1,7 +1,4 @@
-package com.eksi.storeapi.blimpl;
-
-import com.eksi.storeapi.bl.CustomersBl;
-import com.eksi.storeapi.datatypes.Customer;
+package com.eksi.storeapi.Customers;
 
 public class CustomersBlImpl implements CustomersBl
 {
