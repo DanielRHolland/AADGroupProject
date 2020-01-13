@@ -3,15 +3,26 @@ package com.eksi.storeapi.Products;
 
 import com.eksi.storeapi.Warning.Warning;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.List;
 
+@Entity
+@Table(name = "Products")
 public class Product {
+    @Id
+    @Column(name = "product_id")
     private String id;
     private String name;
     private String imageUrl;
+    @Column(name = "location_name")
     private String locationName;
     private List<Warning> warnings;
+    @Column(name = "expiry_date")
     private Long expiryDate;
+    @Column(name = "cost_price")
     private Double costPrice;
     private String description;
 

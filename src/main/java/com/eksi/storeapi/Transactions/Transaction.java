@@ -1,11 +1,22 @@
 package com.eksi.storeapi.Transactions;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.*;
 
+@Entity
+@Table(name = "Transactions")
 public class Transaction {
+    @Id
+    @Column(name = "transaction_id")
     private String transactionId;
-    private String userId;
+    @Column(name = "customer_id")
+    private String customerId;
+    @Column(name = "budget_code")
     private String budgetCode;
+    @Column(name = "timestamp")
     private long timeStamp;
     private List<TransactionEntry> transactionEntries;
     
@@ -17,15 +28,15 @@ public class Transaction {
     public Transaction(final String id){   
         this.transactionId = id;
     }
-    
-    public String getUserId(){
-        return userId;
+
+    public String getCustomerId() {
+        return customerId;
     }
-    
-    public void setUserId(final String userId){
-        this.userId = userId;
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
-    
+
     public String getBudgetCode(){
         return budgetCode;
     }
