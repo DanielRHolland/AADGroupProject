@@ -2,6 +2,6 @@ package com.eksi.storeapi.Customers;
 
 import com.eksi.storeapi.Customers.Customer;
 
-public interface CustomersBl {
+public interface CustomersService {
     Customer getCustomer(String customerId);
 }
