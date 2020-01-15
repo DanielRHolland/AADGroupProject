@@ -1,22 +1,22 @@
 package com.eksi.storeapi;
 
-import com.eksi.storeapi.Products.ProductsBl;
-import com.eksi.storeapi.Customers.CustomersBl;
-import com.eksi.storeapi.Transactions.TransactionBl;
-import com.eksi.storeapi.Products.ProductsBlImpl;
-import com.eksi.storeapi.Customers.CustomersBlImpl;
-import com.eksi.storeapi.Transactions.TransactionBlImpl;
+import com.eksi.storeapi.Products.ProductsService;
+import com.eksi.storeapi.Customers.CustomersService;
+import com.eksi.storeapi.Transactions.TransactionService;
+import com.eksi.storeapi.Products.ProductsServiceImpl;
+import com.eksi.storeapi.Customers.CustomersServiceImpl;
+import com.eksi.storeapi.Transactions.TransactionServiceImpl;
 
 public class ApplicationContext {
-    static public ProductsBl productsBl() {
-        return new ProductsBlImpl();
+    static public ProductsService productsBl() {
+        return new ProductsServiceImpl();
     }
     
-    static public CustomersBl customersBl() {
-        return new CustomersBlImpl();
+    static public CustomersService customersBl() {
+        return new CustomersServiceImpl();
     }
     
-    static public TransactionBl transactionBl() {
-        return new TransactionBlImpl();
+    static public TransactionService transactionBl() {
+        return new TransactionServiceImpl();
     }
 }

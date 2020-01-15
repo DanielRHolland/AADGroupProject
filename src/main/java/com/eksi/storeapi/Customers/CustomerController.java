@@ -8,7 +8,7 @@ import com.eksi.storeapi.Customers.Customer;
 
 @RestController
 @RequestMapping("customer")
-public class CustomerWebService {
+public class CustomerController {
     @RequestMapping("/")
     public Customer customer(@RequestParam(value="customerid", defaultValue="1") String customerid) {
         return ApplicationContext.customersBl().getCustomer(customerid);

@@ -1,5 +1,5 @@
 package com.eksi.storeapi.Transactions;
 
-public interface TransactionBl {
+public interface TransactionService {
     Transaction getTransaction(String transactionId);
 }
