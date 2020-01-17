@@ -22,12 +22,16 @@ public class Product {
     private String imageUrl;
     @Column(name = "location_name")
     private String locationName;
-    private List<Warning> warnings;
+
+//    private List<Warning> warnings;
+
     @Column(name = "expiry_date")
     private Long expiryDate;
     @Column(name = "cost_price")
     private Double costPrice;
     private String description;
+
+    public Product() {}
 
     public String getId() {
         return id;
@@ -57,13 +61,6 @@ public class Product {
         this.locationName = locationName;
     }
 
-    public List<Warning> getWarnings() {
-        return warnings;
-    }
-
-    public void setWarnings(List<Warning> warnings) {
-        this.warnings = warnings;
-    }
 
     public Long getExpiryDate() {
         return expiryDate;
