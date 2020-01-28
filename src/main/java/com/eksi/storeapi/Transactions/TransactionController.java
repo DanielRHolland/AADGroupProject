@@ -21,7 +21,7 @@ public class TransactionController {
     }
 
     @RequestMapping(value = "/transaction/getLog/{dateFrom}/{currentDate}", method = RequestMethod.GET)
-    public List getTransactionLog(@PathVariable("dateFrom") long dateFrom, @PathVariable("currentDate") long currentDate){
+    public List<Transaction> getTransactionLog(@PathVariable("dateFrom") long dateFrom, @PathVariable("currentDate") long currentDate){
         return sl.getTransactionLog(dateFrom, currentDate);
 
     }
