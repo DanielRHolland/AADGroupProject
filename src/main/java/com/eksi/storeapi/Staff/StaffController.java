@@ -24,8 +24,8 @@ public class StaffController {
     }
 
     @RequestMapping(value = "/staff/save", method = RequestMethod.POST)
-    public String saveStaff(@RequestBody Staff customer) throws IOException {
-        ul.update(customer);
+    public String saveStaff(@RequestBody Staff staff) throws IOException {
+        ul.update(staff);
         return "staff/success";
     }
 
