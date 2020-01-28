@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 public class TransactionController {
@@ -17,4 +19,11 @@ public class TransactionController {
         sl.update(transaction);
         return "transaction/success";
     }
+
+    @RequestMapping(value = "/transaction/getLog/{dateFrom}/{currentDate}", method = RequestMethod.GET)
+    public List getTransactionLog(@PathVariable("dateFrom") long dateFrom, @PathVariable("currentDate") long currentDate){
+        return sl.getTransactionLog(dateFrom, currentDate);
+
+    }
+
 }

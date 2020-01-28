@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -14,5 +16,11 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public Transaction update(Transaction transaction) throws IOException{
         return tr.save(transaction);
+    }
+
+    public List getTransactionLog(long dateFrom, long currentDate){
+        List<Transaction> transactionList = new ArrayList<>();
+
+        return transactionList;
     }
 }
