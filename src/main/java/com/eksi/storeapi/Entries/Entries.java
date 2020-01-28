@@ -1,12 +1,15 @@
 package com.eksi.storeapi.Entries;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Entries")
 public class Entries {
+    @Id
     @Column(name = "transaction_id")
     private String transactionId;
     @Column(name = "product_id")

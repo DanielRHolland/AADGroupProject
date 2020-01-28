@@ -17,6 +17,8 @@ public class Warning {
     private String description;
     private String iconUrl;
 
+    public Warning() {}
+
     public String getProductId() {
         return productId;
     }

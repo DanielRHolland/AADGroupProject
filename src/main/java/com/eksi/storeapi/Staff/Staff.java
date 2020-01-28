@@ -1,20 +1,17 @@
-package com.eksi.storeapi.Customers;
+package com.eksi.storeapi.Staff;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Customers")
-public class Customer {
+@Table(name = "Staff")
+public class Staff {
 
     @Id
-    @Column(name = "customer_id")
-    private String customerId;
+    @Column(name = "staff_id")
+    private int id;
     private String username;
     private String passwordHash;
     private int privLevel;
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
 
     public int getPrivLevel() {
         return privLevel;
@@ -26,6 +23,14 @@ public class Customer {
 
     public String getUsername() {
         return username;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setUsername(String username) {
@@ -40,12 +45,5 @@ public class Customer {
         this.passwordHash = passwordHash;
     }
 
-    public String getCustomerId(){
-        return customerId;
-    }
-
-    public Customer(final String id) {
-        this.customerId = id;
-    }
 }
     
