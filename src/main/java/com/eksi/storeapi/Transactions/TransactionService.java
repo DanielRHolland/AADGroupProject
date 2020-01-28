@@ -1,5 +1,7 @@
 package com.eksi.storeapi.Transactions;
 
+import java.io.IOException;
+
 public interface TransactionService {
-    Transaction getTransaction(String transactionId);
+    public Transaction update(Transaction transaction) throws IOException;
 }

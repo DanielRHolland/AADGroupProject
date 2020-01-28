@@ -16,8 +16,8 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public Staff update(Staff customer) throws IOException {
-        return cr.save(customer);
+    public Staff update(Staff staff) throws IOException {
+        return cr.save(staff);
     }
 
     public List getAllStaff(){

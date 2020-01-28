@@ -9,7 +9,6 @@ import java.util.List;
 @RestController
 public class StaffController {
 
-
     @Autowired
     private StaffServiceImpl ul;
 
