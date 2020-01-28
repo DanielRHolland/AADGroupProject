@@ -9,12 +9,9 @@ import java.util.Arrays;
 public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRepository tr;
-
-
+    
     @Override
-    public Transaction getTransaction(String transactionId){
-        Transaction transaction = new Transaction(transactionId);
-        transaction.setTransactionEntries(Arrays.asList(new TransactionEntry("entry" + transactionId)));
-        return transaction;
+    public Transaction getTransaction(String transactionId) {
+        return null;
     }
 }

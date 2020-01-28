@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransactionWebService {
     @RequestMapping("/")
     public Transaction transaction(@RequestParam(value="transactionId", defaultValue="12345") String transactionid) {
-        return ApplicationContext.transactionBl().getTransaction(transactionid);
+        return ApplicationContext.transactionService().getTransaction(transactionid);
     }
 }
