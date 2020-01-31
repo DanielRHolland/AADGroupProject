@@ -3,11 +3,12 @@ package com.eksi.storeapi.Authentication;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 //TODO reimplement this completely
 public class ApiKeyImpl implements ApiKeyService {
 
-    private List<SessionKey> sessionKeys;//TODO use binary tree instead
+    private List<SessionKey> sessionKeys = new ArrayList<>();//TODO use binary tree instead
 
     @Override
     public String createKey(String id, String hash) {
