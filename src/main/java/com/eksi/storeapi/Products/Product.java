@@ -18,7 +18,7 @@ public class Product {
     private String name;
 
 
-    private int quanity;
+    private int quantity;
     private String imageUrl;
     @Column(name = "location_name")
     private String locationName;
@@ -86,12 +86,12 @@ public class Product {
         this.description = description;
     }
 
-    public int getQuanity() {
-        return quanity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuanity(int quanity) {
-        this.quanity = quanity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setId(String id) {
