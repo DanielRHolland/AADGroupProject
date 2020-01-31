@@ -1,6 +1,7 @@
 package com.eksi.storeapi.Authentication;
 
 import com.eksi.storeapi.ApplicationContext;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
     private ApiKeyService aks = ApplicationContext.apiKeyService();
 
-    @RequestMapping(value = "/l")
+    @GetMapping(value = "/l")
     public String login(@RequestParam("id") String id, @RequestParam("hash") String hash) {
         return aks.createKey(id, hash);
     }
