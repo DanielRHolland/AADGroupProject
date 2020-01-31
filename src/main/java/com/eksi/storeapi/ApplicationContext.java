@@ -10,17 +10,36 @@ import com.eksi.storeapi.Staff.StaffServiceImpl;
 import com.eksi.storeapi.Transactions.TransactionServiceImpl;
 
 public class ApplicationContext {
+
+    static private ProductService productService;
     static public ProductService productsService() {
-        return new ProductServiceImpl();
-    }
-    
-    static public StaffService customersService() {
-        return new StaffServiceImpl();
-    }
-    
-    static public TransactionService transactionService() {
-        return new TransactionServiceImpl();
+        if (productService==null) {
+            productService = new ProductServiceImpl();
+        }
+        return productService;
     }
 
-    static public ApiKeyService apiKeyService() { return new ApiKeyImpl(); }
+    static private StaffService staffService;
+    static public StaffService staffService() {
+        if (staffService==null) {
+            staffService = new StaffServiceImpl();
+        }
+        return staffService;
+    }
+
+    static private TransactionService transactionService;
+    static public TransactionService transactionService() {
+        if (transactionService==null) {
+            transactionService = new TransactionServiceImpl();
+        }
+        return transactionService;
+    }
+
+    static private ApiKeyService apiKeyService;
+    static public ApiKeyService apiKeyService() {
+        if (apiKeyService==null) {
+            apiKeyService = new ApiKeyImpl();
+        }
+        return apiKeyService;
+    }
 }

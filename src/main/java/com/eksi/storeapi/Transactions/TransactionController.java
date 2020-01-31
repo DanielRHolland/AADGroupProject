@@ -11,8 +11,7 @@ import java.util.List;
 @RestController
 public class TransactionController {
 
-    @Autowired
-    private TransactionServiceImpl sl;
+    private TransactionService sl = ApplicationContext.transactionService();
 
     @RequestMapping(value = "/transaction/save", method = RequestMethod.POST)
     public String saveTransaction(@RequestBody Transaction transaction) throws IOException {
