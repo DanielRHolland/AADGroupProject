@@ -30,7 +30,7 @@ public class Staff {
     }
 
     public void setnNumber(String nNumber) {
-        this.nNumber = id;
+        this.nNumber = nNumber;
     }
 
     public void setUsername(String username) {
