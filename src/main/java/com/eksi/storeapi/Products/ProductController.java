@@ -6,18 +6,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+@RequestMapping(value = "/products")
 @RestController
 public class ProductController {
 
     private ProductService ps = ApplicationContext.productsService();
 
-    @RequestMapping(value = "/products/save", method = RequestMethod.POST)
+    @PostMapping(value = "/s")
     public String saveProduct(@RequestBody Product product) throws IOException{
         ps.update(product);
         return "product/success";
     }
 
-    @RequestMapping(value = "/products/getProduct/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/g/{id}")
     public Product getProduct(@PathVariable("id") Integer id){
         return ps.getProduct(id);
     }
