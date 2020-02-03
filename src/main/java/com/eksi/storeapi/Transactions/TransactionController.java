@@ -9,17 +9,18 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@RequestMapping(value = "/transaction")
 public class TransactionController {
 
     private TransactionService sl = ApplicationContext.transactionService();
 
-    @RequestMapping(value = "/transaction/save", method = RequestMethod.POST)
+    @PostMapping(value = "/s")
     public String saveTransaction(@RequestBody Transaction transaction) throws IOException {
         sl.update(transaction);
         return "transaction/success";
     }
 
-    @RequestMapping(value = "/transaction/getLog/{dateFrom}/{currentDate}", method = RequestMethod.GET)
+    @GetMapping(value = "/l/{dateFrom}/{currentDate}")
     public List<Transaction> getTransactionLog(@PathVariable("dateFrom") long dateFrom, @PathVariable("currentDate") long currentDate){
         return sl.getTransactionLog(dateFrom, currentDate);
 

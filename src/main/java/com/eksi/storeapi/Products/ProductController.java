@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
-@RequestMapping(value = "/products")
+@RequestMapping(value = "/product")
 @RestController
 public class ProductController {
 
