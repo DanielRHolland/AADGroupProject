@@ -20,9 +20,10 @@ public class ProductController {
     }
 
     @GetMapping(value = "/g/{id}")
-    public Product getProduct(@PathVariable("id") Integer id){
+    public Product getProduct(@PathVariable("id") String id){
         return ps.getProduct(id);
     }
+
 
     @GetMapping(value = "/l/")
     public List getProducts(){
