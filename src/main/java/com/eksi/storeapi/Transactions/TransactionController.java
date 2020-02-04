@@ -27,4 +27,9 @@ public class TransactionController {
 
     }
 
+    @GetMapping(value = "/lAll")
+    public List getAllTransactions(){
+        return (List) sl.getAllTransaction();
+    }
+
 }
