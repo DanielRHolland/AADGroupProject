@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 public class ProductController {
 
+    @Autowired
     private ProductService ps = ApplicationContext.productsService();
 
     @PostMapping(value = "/s")
@@ -20,8 +21,8 @@ public class ProductController {
     }
 
     @GetMapping(value = "/g/{id}")
-    public Product getProduct(@PathVariable("id") Integer id){
-        return ps.getProduct(id);
+    public Product getProduct(@PathVariable("id") String product_id){
+        return ps.getProduct(product_id);
     }
 
     @GetMapping(value = "/l/")

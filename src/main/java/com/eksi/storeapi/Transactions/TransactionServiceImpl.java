@@ -19,6 +19,10 @@ public class TransactionServiceImpl implements TransactionService {
         return tr.save(transaction);
     }
 
+    public List getAllTransaction(){
+        return (List)tr.findAll();
+    }
+
     public List<Transaction> getTransactionLog(long dateFrom, long currentDate){
         List<Transaction> allTxs = (List<Transaction>) tr.findAll();
         return allTxs.stream()
