@@ -11,6 +11,7 @@ import java.util.List;
 @RequestMapping("/staff")
 public class StaffController {
 
+    @Autowired
     private StaffService ul = ApplicationContext.staffService();
 
     @GetMapping(value = "/g/{id}")

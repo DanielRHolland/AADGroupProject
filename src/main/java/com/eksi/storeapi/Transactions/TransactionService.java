@@ -5,6 +5,6 @@ import java.util.List;
 
 public interface TransactionService {
     public Transaction update(Transaction transaction) throws IOException;
-
+    List getAllTransaction();
     List<Transaction> getTransactionLog(long dateFrom, long currentDate);
 }

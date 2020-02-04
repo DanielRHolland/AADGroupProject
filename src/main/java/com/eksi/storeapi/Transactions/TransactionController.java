@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping(value = "/transaction")
 public class TransactionController {
 
+    @Autowired
     private TransactionService sl = ApplicationContext.transactionService();
 
     @PostMapping(value = "/s")
@@ -24,6 +25,11 @@ public class TransactionController {
     public List<Transaction> getTransactionLog(@PathVariable("dateFrom") long dateFrom, @PathVariable("currentDate") long currentDate){
         return sl.getTransactionLog(dateFrom, currentDate);
 
+    }
+
+    @GetMapping(value = "/lAll")
+    public List getAllTransactions(){
+        return (List) sl.getAllTransaction();
     }
 
 }

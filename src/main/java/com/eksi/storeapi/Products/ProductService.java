@@ -6,5 +6,5 @@ import java.util.List;
 public interface ProductService {
     Product update(Product p) throws IOException;
     List getAllProducts();
-    Product getProduct(Integer id);
+    Product getProduct(String id);
 }
