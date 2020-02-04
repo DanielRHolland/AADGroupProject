@@ -17,6 +17,7 @@ public class Product {
     private String id;
     private String name;
     private int quantity;
+    @Column(name = "imageURL")
     private String imageUrl;
     @Column(name = "location_name")
     private String locationName;

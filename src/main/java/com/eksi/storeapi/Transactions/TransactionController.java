@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping(value = "/transaction")
 public class TransactionController {
 
+    @Autowired
     private TransactionService sl = ApplicationContext.transactionService();
 
     @PostMapping(value = "/s")
