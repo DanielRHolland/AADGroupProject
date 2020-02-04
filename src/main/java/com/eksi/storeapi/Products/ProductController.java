@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RequestMapping(value = "/product")
 @RestController
@@ -23,5 +24,9 @@ public class ProductController {
         return ps.getProduct(id);
     }
 
+    @GetMapping(value = "/l/")
+    public List getProducts(){
+        return (List) ps.getAllProducts();
+    }
 
 }
