@@ -31,4 +31,10 @@ public class ProductController {
         return (List) ps.getAllProducts();
     }
 
+    @DeleteMapping(value = "/d")
+    public String deleteProduct(@RequestBody Product product){
+        ps.delete(product);
+        return "product/delete/success";
+    }
+
 }

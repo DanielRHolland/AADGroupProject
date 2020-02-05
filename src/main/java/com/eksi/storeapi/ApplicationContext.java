@@ -8,6 +8,8 @@ import com.eksi.storeapi.Transactions.TransactionService;
 import com.eksi.storeapi.Products.ProductServiceImpl;
 import com.eksi.storeapi.Staff.StaffServiceImpl;
 import com.eksi.storeapi.Transactions.TransactionServiceImpl;
+import com.eksi.storeapi.quickbooks.QuickBooksService;
+import com.eksi.storeapi.quickbooks.QuickBooksServiceImpl;
 
 public class ApplicationContext {
 
@@ -41,5 +43,13 @@ public class ApplicationContext {
             apiKeyService = new ApiKeyImpl();
         }
         return apiKeyService;
+    }
+
+    static private QuickBooksService quickBooksService;
+    static public QuickBooksService quickBooksService(){
+        if(quickBooksService==null){
+            quickBooksService = new QuickBooksServiceImpl();
+        }
+        return quickBooksService;
     }
 }

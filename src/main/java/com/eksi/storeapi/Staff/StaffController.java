@@ -28,7 +28,12 @@ public class StaffController {
     @PostMapping(value = "/s")
     public String saveStaff(@RequestBody Staff staff) throws IOException {
         ul.update(staff);
-        return "staff/success";
+        return "staff/save/success";
+    }
+    @DeleteMapping(value = "/d")
+    public String deleteStaff(@RequestBody Staff staff) throws IOException{
+        ul.delete(staff);
+        return "staff/delete/success";
     }
 
 }

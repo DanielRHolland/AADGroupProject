@@ -5,8 +5,7 @@ import java.util.List;
 
 public interface StaffService {
     Staff update(Staff staff) throws IOException;
-
     Staff getStaffMember(Integer id);
-
+    void delete(Staff staff) throws IOException;
     List getAllStaff();
 }
