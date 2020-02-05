@@ -24,4 +24,8 @@ public class StaffServiceImpl implements StaffService {
         return (List)cr.findAll();
     }
 
+    public void delete(Staff staff) throws IOException{
+        cr.delete(staff);
+    }
+
 }
