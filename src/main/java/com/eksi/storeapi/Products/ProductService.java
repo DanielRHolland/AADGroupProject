@@ -7,4 +7,5 @@ public interface ProductService {
     Product update(Product p) throws IOException;
     List getAllProducts();
     Product getProduct(String id);
+    void delete(Product p);
 }

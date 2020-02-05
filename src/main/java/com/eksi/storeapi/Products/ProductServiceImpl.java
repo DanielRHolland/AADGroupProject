@@ -27,4 +27,8 @@ public class ProductServiceImpl implements ProductService {
     public List getAllProducts(){
         return (List)pr.findAll();
     }
+
+    public void delete(Product p){
+        pr.delete(p);
+    }
 }
