@@ -1,9 +1,9 @@
 package com.eksi.storeapi.quickbooks;
 
 public class QuickBooksAPI {
-    private String BASE_QUICKBOOK_URL = "https://quickbooks.api.intuit.com";
+    public static String BASE_QUICKBOOK_URL = "https://quickbooks.api.intuit.com";
     private String createPurchaseOrder = null;
-    private String realmId = null;
+    public String realmId = null;
 
     public String getCreatePurchaseOrder() {
         if (createPurchaseOrder == null) {
@@ -12,7 +12,6 @@ public class QuickBooksAPI {
         return createPurchaseOrder;
     }
 
-//todo Check responsecode (should be 200)
 }
 
 /*
