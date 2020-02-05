@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 
 -- Dumping structure for table aad.staff
 CREATE TABLE IF NOT EXISTS `staff` (
-  `staff_id` int(11) NOT NULL,
+  `staff_id` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
   `passwordHash` varchar(45) NOT NULL,
   `privLevel` int(11) NOT NULL,
@@ -52,13 +52,11 @@ CREATE TABLE IF NOT EXISTS `staff` (
 -- Dumping structure for table aad.transactions
 CREATE TABLE IF NOT EXISTS `transactions` (
   `transaction_id` int(11) NOT NULL,
-  `staff_id` int(11) DEFAULT NULL,
   `budget_code` varchar(45) DEFAULT NULL,
   `timestamp` int(11) DEFAULT NULL,
+  `nNumber` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`transaction_id`),
-  KEY `staff_id` (`staff_id`),
   KEY `budget_code` (`budget_code`),
-  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`),
   CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`budget_code`) REFERENCES `budget_codes` (`budget_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

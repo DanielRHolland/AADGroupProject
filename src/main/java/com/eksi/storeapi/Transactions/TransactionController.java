@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/transaction")
 public class TransactionController {
 
@@ -27,7 +28,7 @@ public class TransactionController {
 
     }
 
-    @GetMapping(value = "/lAll")
+    @GetMapping(value = "/l")
     public List getAllTransactions(){
         return (List) sl.getAllTransaction();
     }
