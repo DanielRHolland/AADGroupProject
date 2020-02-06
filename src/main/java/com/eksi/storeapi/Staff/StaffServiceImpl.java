@@ -11,21 +11,23 @@ public class StaffServiceImpl implements StaffService {
     @Autowired
     private StaffRepository cr;
 
-    public Staff getStaffMember(Integer id){
-        return cr.findById(id).orElse(null);
-    }
 
     @Override
     public Staff update(Staff staff) throws IOException {
         return cr.save(staff);
     }
 
+    @Override
+    public Staff getStaffMember(String id){
+        return cr.findById(id).orElse(null);
+    }
+
     public List getAllStaff(){
         return (List)cr.findAll();
     }
 
-    public void delete(Staff staff) throws IOException{
-        cr.delete(staff);
+    public void delete(String id) throws IOException{
+        cr.delete(cr.findById(id));
     }
 
 }

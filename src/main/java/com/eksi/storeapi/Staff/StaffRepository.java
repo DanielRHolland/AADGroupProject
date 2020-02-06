@@ -2,5 +2,8 @@ package com.eksi.storeapi.Staff;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface StaffRepository extends CrudRepository<Staff, Integer> {
+import java.util.Optional;
+
+public interface StaffRepository extends CrudRepository<Staff, String> {
+    void delete(Optional<Staff> byId);
 }
