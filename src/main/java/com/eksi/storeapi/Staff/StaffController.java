@@ -15,7 +15,7 @@ public class StaffController {
     private StaffService ul = ApplicationContext.staffService();
 
     @GetMapping(value = "/g/{id}")
-    public Staff getStaff(@PathVariable("id") Integer id){
+    public Staff getStaff(@PathVariable("id") String id){
         return ul.getStaffMember(id);
     }
 
