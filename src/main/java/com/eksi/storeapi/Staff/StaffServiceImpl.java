@@ -22,10 +22,12 @@ public class StaffServiceImpl implements StaffService {
         return cr.findById(id).orElse(null);
     }
 
+    @Override
     public List getAllStaff(){
         return (List)cr.findAll();
     }
 
+    @Override
     public void delete(String id) throws IOException{
         cr.delete(cr.findById(id));
     }
