@@ -16,7 +16,7 @@ public class StaffController {
     private StaffService ul = ApplicationContext.staffService();
 
     @GetMapping(value = "/g/{id}")
-    public Staff getStaff(@PathVariable("id") Integer id){
+    public Staff getStaff(@PathVariable("id") String id){
         return ul.getStaffMember(id);
     }
 
@@ -30,11 +30,11 @@ public class StaffController {
         ul.update(staff);
         return "staff/save/success";
     }
-    @DeleteMapping(value = "/d")
-    public String deleteStaff(@RequestBody Staff staff) throws IOException{
-        ul.delete(staff);
+
+    @DeleteMapping(value = "/d/{id}")
+    public String deleteStaff(@PathVariable String id) throws IOException{
+        ul.delete(id);
         return "staff/delete/success";
     }
-
 }
 
