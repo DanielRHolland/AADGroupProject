@@ -11,7 +11,6 @@ public class StaffServiceImpl implements StaffService {
     @Autowired
     private StaffRepository cr;
 
-
     @Override
     public Staff update(Staff staff) throws IOException {
         return cr.save(staff);
@@ -28,8 +27,8 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public void delete(String id) throws IOException{
-        cr.delete(cr.findById(id));
+    public void deleteById(String id) throws IOException{
+        cr.deleteStaffById(id);
     }
 
 }

@@ -6,6 +6,6 @@ import java.util.List;
 public interface StaffService {
     Staff update(Staff staff) throws IOException;
     Staff getStaffMember(String id);
-    void delete(String id) throws IOException;
+    void deleteById(String id) throws IOException;
     List getAllStaff();
 }
