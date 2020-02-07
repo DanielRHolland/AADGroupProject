@@ -8,7 +8,7 @@ public class Staff {
 
     @Id
     @Column(name = "staff_id")
-    private String nNumber;
+    private String id;
     private String username;
     private String passwordHash;
     private int privLevel;
@@ -26,11 +26,11 @@ public class Staff {
     }
 
     public String getnNumber() {
-        return nNumber;
+        return this.id;
     }
 
     public void setnNumber(String nNumber) {
-        this.nNumber = nNumber;
+        this.id = nNumber;
     }
 
     public void setUsername(String username) {

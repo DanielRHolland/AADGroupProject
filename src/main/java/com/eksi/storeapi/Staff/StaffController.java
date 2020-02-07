@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/staff")
 public class StaffController {
-
     @Autowired
     private StaffService ul = ApplicationContext.staffService();
 
@@ -32,7 +31,7 @@ public class StaffController {
 
     @DeleteMapping(value = "/d/{id}")
     public String deleteStaff(@PathVariable String id) throws IOException{
-        ul.delete(id);
+        ul.deleteById(id);
         return "staff/delete/success";
     }
 }
