@@ -1,21 +1,21 @@
 package com.eksi.storeapi.Transactions;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.*;
 
 @Entity
 @Table(name = "Transactions")
 public class Transaction {
-    @Id
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "transaction_id")
     private String transactionId;
-    @Column(name = "staff_id")
-    private String staffId;
     @Column(name = "budget_code")
     private String budgetCode;
+    @Column(name = "nNumber")
+    private String nNumber;
     @Column(name = "timestamp")
     private long timeStamp;
 
@@ -23,20 +23,33 @@ public class Transaction {
         return transactionId;
     }
 
-    // Constructor
-    public Transaction(){
-
+    public Transaction(String transactionId, String budgetCode, String nNumber, long timeStamp) {
+        this.budgetCode = budgetCode;
+        this.transactionId = transactionId;
+        this.nNumber = nNumber;
+        this.timeStamp = timeStamp;
     }
+
+    public Transaction(){}
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public String getnNumber() {
+        return nNumber;
+    }
+
+    public void setnNumber(String nNumber) {
+        this.nNumber = nNumber;
+    }
+
     public Transaction(final String id) {
         this.transactionId = id;
-    }
-
-    public String getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(String staffId) {
-        this.staffId = staffId;
     }
 
     public String getBudgetCode() {

@@ -19,6 +19,11 @@ public class TransactionServiceImpl implements TransactionService {
         return tr.save(transaction);
     }
 
+    @Override
+    public void deleteById(String id) throws IOException{
+        tr.deleteTransactionByTransactionId(id);
+    }
+
     public List getAllTransaction(){
         return (List)tr.findAll();
     }
