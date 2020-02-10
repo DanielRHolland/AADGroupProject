@@ -11,7 +11,6 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ProductController {
-
     @Autowired
     private ProductService ps = ApplicationContext.productsService();
 
@@ -28,12 +27,12 @@ public class ProductController {
 
     @GetMapping(value = "/l")
     public List getProducts(){
-        return (List) ps.getAllProducts();
+        return ps.getAllProducts();
     }
 
-    @DeleteMapping(value = "/d")
-    public String deleteProduct(@RequestBody Product product){
-        ps.delete(product);
+    @DeleteMapping(value = "/d/{id}")
+    public String deleteProduct(@PathVariable String id) throws IOException {
+        ps.deleteById(id);
         return "product/delete/success";
     }
 

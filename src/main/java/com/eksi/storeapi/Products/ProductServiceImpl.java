@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-
     @Autowired
     private ProductRepository pr;
 
@@ -28,7 +27,9 @@ public class ProductServiceImpl implements ProductService {
         return (List)pr.findAll();
     }
 
-    public void delete(Product p){
-        pr.delete(p);
+    @Override
+    public void deleteById(String id) throws IOException{
+        pr.deleteProductById(id);
     }
+
 }

@@ -25,7 +25,12 @@ public class TransactionController {
     @GetMapping(value = "/l/{dateFrom}/{currentDate}")
     public List<Transaction> getTransactionLog(@PathVariable("dateFrom") long dateFrom, @PathVariable("currentDate") long currentDate){
         return sl.getTransactionLog(dateFrom, currentDate);
+    }
 
+    @DeleteMapping(value = "/d/{id}")
+    public String deleteStaff(@PathVariable String id) throws IOException{
+        sl.deleteById(id);
+        return "transaction/delete/success";
     }
 
     @GetMapping(value = "/l")
