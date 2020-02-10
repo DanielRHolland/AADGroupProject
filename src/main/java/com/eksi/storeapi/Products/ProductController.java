@@ -15,9 +15,9 @@ public class ProductController {
     private ProductService ps = ApplicationContext.productsService();
 
     @PostMapping(value = "/s")
-    public String saveProduct(@RequestBody Product product) throws IOException{
+    public Product saveProduct(@RequestBody Product product) throws IOException{
         ps.update(product);
-        return "product/success";
+        return product;
     }
 
     @GetMapping(value = "/g/{id}")

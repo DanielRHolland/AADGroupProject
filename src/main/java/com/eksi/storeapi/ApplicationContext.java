@@ -2,6 +2,8 @@ package com.eksi.storeapi;
 
 import com.eksi.storeapi.Authentication.ApiKeyImpl;
 import com.eksi.storeapi.Authentication.ApiKeyService;
+import com.eksi.storeapi.Entries.EntriesService;
+import com.eksi.storeapi.Entries.EntriesServiceImpl;
 import com.eksi.storeapi.Products.ProductService;
 import com.eksi.storeapi.Staff.StaffService;
 import com.eksi.storeapi.Transactions.TransactionService;
@@ -35,6 +37,14 @@ public class ApplicationContext {
             transactionService = new TransactionServiceImpl();
         }
         return transactionService;
+    }
+
+    static private EntriesService entriesService;
+    static public EntriesService entriesService(){
+        if(entriesService==null){
+            entriesService = new EntriesServiceImpl();
+        }
+        return entriesService;
     }
 
     static private ApiKeyService apiKeyService;
