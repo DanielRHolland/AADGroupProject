@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping(value = "/transaction")
 public class TransactionController {
 
@@ -57,7 +58,7 @@ public class TransactionController {
         return "transaction/delete/success";
     }
 
-    @GetMapping(value = "/lAll")
+    @GetMapping(value = "/l")
     public List getAllTransactions(){
         return (List) sl.getAllTransaction();
     }

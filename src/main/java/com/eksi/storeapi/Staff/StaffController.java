@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/staff")
 public class StaffController {
     @Autowired

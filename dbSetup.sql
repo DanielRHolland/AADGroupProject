@@ -1,3 +1,10 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               5.7.29-log - MySQL Community Server (GPL)
+-- Server OS:                    Win64
+-- HeidiSQL Version:             10.3.0.5771
+-- --------------------------------------------------------
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
@@ -15,9 +22,16 @@ CREATE TABLE IF NOT EXISTS `budget_codes` (
   PRIMARY KEY (`budget_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table aad.budget_codes: ~0 rows (approximately)
-/*!40000 ALTER TABLE `budget_codes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `budget_codes` ENABLE KEYS */;
+-- Data exporting was unselected.
+
+-- Dumping structure for table aad.entries
+CREATE TABLE IF NOT EXISTS `entries` (
+  `transaction_id` varchar(50) DEFAULT NULL,
+  `product_id` varchar(50) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Data exporting was unselected.
 
 -- Dumping structure for table aad.products
 CREATE TABLE IF NOT EXISTS `products` (
@@ -32,39 +46,29 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table aad.products: ~0 rows (approximately)
-/*!40000 ALTER TABLE `products` DISABLE KEYS */;
-/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+-- Data exporting was unselected.
 
 -- Dumping structure for table aad.staff
 CREATE TABLE IF NOT EXISTS `staff` (
-  `staff_id` int(11) NOT NULL,
+  `staff_id` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
   `passwordHash` varchar(45) NOT NULL,
   `privLevel` int(11) NOT NULL,
   PRIMARY KEY (`staff_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table aad.staff: ~0 rows (approximately)
-/*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-/*!40000 ALTER TABLE `staff` ENABLE KEYS */;
+-- Data exporting was unselected.
 
 -- Dumping structure for table aad.transactions
 CREATE TABLE IF NOT EXISTS `transactions` (
-  `transaction_id` int(11) NOT NULL,
-  `staff_id` int(11) DEFAULT NULL,
+  `transaction_id` varchar(50) NOT NULL,
   `budget_code` varchar(45) DEFAULT NULL,
-  `timestamp` int(11) DEFAULT NULL,
-  PRIMARY KEY (`transaction_id`),
-  KEY `staff_id` (`staff_id`),
-  KEY `budget_code` (`budget_code`),
-  CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`),
-  CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`budget_code`) REFERENCES `budget_codes` (`budget_code`)
+  `timestamp` float DEFAULT NULL,
+  `n_Number` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`transaction_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table aad.transactions: ~0 rows (approximately)
-/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
+-- Data exporting was unselected.
 
 -- Dumping structure for table aad.warnings
 CREATE TABLE IF NOT EXISTS `warnings` (
@@ -77,9 +81,7 @@ CREATE TABLE IF NOT EXISTS `warnings` (
   CONSTRAINT `product_idFK` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table aad.warnings: ~0 rows (approximately)
-/*!40000 ALTER TABLE `warnings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `warnings` ENABLE KEYS */;
+-- Data exporting was unselected.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

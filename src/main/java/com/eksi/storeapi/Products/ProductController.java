@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RequestMapping(value = "/product")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ProductController {
     @Autowired
@@ -24,7 +25,7 @@ public class ProductController {
         return ps.getProduct(product_id);
     }
 
-    @GetMapping(value = "/l/")
+    @GetMapping(value = "/l")
     public List getProducts(){
         return ps.getAllProducts();
     }
