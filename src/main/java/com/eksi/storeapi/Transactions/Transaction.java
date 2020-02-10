@@ -11,21 +11,17 @@ public class Transaction {
     @Id @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "transaction_id")
-    private String transactionId;
-    @Column(name = "budget_code")
-    private String budgetCode;
+    private String id;
     @Column(name = "nNumber")
     private String nNumber;
+    @Column(name = "budget_code")
+    private String budgetCode;
     @Column(name = "timestamp")
     private long timeStamp;
 
-    public String TransactionId() {
-        return transactionId;
-    }
-
     public Transaction(String transactionId, String budgetCode, String nNumber, long timeStamp) {
         this.budgetCode = budgetCode;
-        this.transactionId = transactionId;
+        this.id = transactionId;
         this.nNumber = nNumber;
         this.timeStamp = timeStamp;
     }
@@ -33,11 +29,11 @@ public class Transaction {
     public Transaction(){}
 
     public String getTransactionId() {
-        return transactionId;
+        return id;
     }
 
     public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
+        this.id = transactionId;
     }
 
     public String getnNumber() {
@@ -46,10 +42,6 @@ public class Transaction {
 
     public void setnNumber(String nNumber) {
         this.nNumber = nNumber;
-    }
-
-    public Transaction(final String id) {
-        this.transactionId = id;
     }
 
     public String getBudgetCode() {
