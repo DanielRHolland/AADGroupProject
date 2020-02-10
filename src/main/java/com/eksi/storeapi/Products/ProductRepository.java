@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductRepository extends CrudRepository<Product, String> {
-    void deleteProductById(String id);
+    void deleteById(String id);
 }
