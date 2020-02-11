@@ -31,7 +31,7 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public void deleteById(String id) throws IOException{
-        tr.deleteTransactionById(id);
+        tr.deleteById(id);
     }
 
     public List getAllTransaction(){
