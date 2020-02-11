@@ -21,6 +21,7 @@ public class StaffServiceImpl implements StaffService {
         return cr.findById(id).orElse(null);
     }
 
+    @Override
     public List getAllStaff(){
         return (List)cr.findAll();
     }
@@ -29,4 +30,5 @@ public class StaffServiceImpl implements StaffService {
     public void deleteById(String id) throws IOException{
         cr.deleteStaffById(id);
     }
+
 }
