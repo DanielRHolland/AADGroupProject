@@ -13,6 +13,7 @@ public class EntriesServiceImpl implements EntriesService {
 
     @Override
     public List<Entries> update(List<Entries> entries) throws IOException {
+        deleteEntriesWithSameTransactionId(entries, entries.get(0).getTransactionId());
         for(Entries entry : entries){
             er.save(entry);
         }
@@ -22,6 +23,14 @@ public class EntriesServiceImpl implements EntriesService {
     @Override
     public List<Entries> getEntriesFromTransactionId(String id) {
         return er.getEntriesByTransactionId(id);
+    }
+
+    public void deleteEntriesWithSameTransactionId(List<Entries> entries, String transactionId){
+        for(Entries entry : entries){
+            if(entry.getTransactionId().equalsIgnoreCase(transactionId)){
+                er.delete(entry);
+            }
+        }
     }
 
 
