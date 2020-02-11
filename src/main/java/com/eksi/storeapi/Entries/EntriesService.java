@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface EntriesService {
-    List<Entries> update(List<Entries> entries) throws IOException;
-    public List<Entries> getEntriesFromTransactionId(@PathVariable String id);
-
+    List<Entries> update(List<Entries> entries, String transactionId) throws IOException;
+    List<Entries> getEntriesFromTransactionId(@PathVariable String id);
 }
