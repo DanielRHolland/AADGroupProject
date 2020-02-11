@@ -1,10 +1,10 @@
 package com.eksi.storeapi.Entries;
 
-import com.eksi.storeapi.Transactions.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class EntriesServiceImpl implements EntriesService {
@@ -12,8 +12,17 @@ public class EntriesServiceImpl implements EntriesService {
     private EntriesRepository er;
 
     @Override
-    public Entries update(Entries entries) throws IOException {
-        return er.save(entries);
+    public List<Entries> update(List<Entries> entries) throws IOException {
+        for(Entries entry : entries){
+            er.save(entry);
+        }
+        return entries;
     }
+
+    @Override
+    public List<Entries> getEntriesFromTransactionId(String id) {
+        return er.getEntriesByTransactionId(id);
+    }
+
 
 }

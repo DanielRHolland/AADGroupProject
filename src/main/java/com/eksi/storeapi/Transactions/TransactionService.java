@@ -13,5 +13,4 @@ public interface TransactionService {
     List<Transaction> getTransactionLog(long dateFrom, long currentDate);
     void deleteById(String id) throws IOException;
     File getTransactionLogAsCSV(long from, long to);
-    Optional<Entries> getEntryFromId(String id);
 }

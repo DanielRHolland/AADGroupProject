@@ -64,13 +64,16 @@ public class TransactionController {
     }
 
     //Entries
-    @GetMapping(value = "/entry/{id}")
-    public Optional<Entries> getEntry(@PathVariable String id){
-        return sl.getEntryFromId(id);
+    @GetMapping(value = "/entries/{id}")
+    public List<Entries> getEntriesFromTransactionId(@PathVariable String id){
+        return el.getEntriesFromTransactionId(id);
     }
 
-    @PostMapping(value = "/entry/s")
-    public Entries saveEntry(@RequestBody Entries entry) throws IOException {
+    @PostMapping(value = "/entries/s/{transactionId}")
+    public List<Entries> saveEntry(@RequestBody List<Entries> entry, @PathVariable String transactionId) throws IOException {
+        for(Entries entryVar : entry){
+            entryVar.setTransactionId(transactionId);
+        }
         el.update(entry);
         return entry;
     }

@@ -25,10 +25,6 @@ public class TransactionServiceImpl implements TransactionService {
         return tr.save(transaction);
     }
 
-    public Optional<Entries> getEntryFromId(String id){
-        return er.findById(id);
-    }
-
     @Override
     public void deleteById(String id) throws IOException{
         tr.deleteById(id);
