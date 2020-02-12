@@ -12,8 +12,10 @@ public class EntriesServiceImpl implements EntriesService {
     private EntriesRepository er;
 
     @Override
-    public List<Entries> update(List<Entries> entries) throws IOException {
-        deleteEntriesWithSameTransactionId(entries, entries.get(0).getTransactionId());
+    public List<Entries> update(List<Entries> entries, String transactionId) throws IOException {
+        if (er.existsByTransactionId(transactionId)) {
+            er.deleteByTransactionId(transactionId);
+        }
         for(Entries entry : entries){
             er.save(entry);
         }
@@ -24,14 +26,5 @@ public class EntriesServiceImpl implements EntriesService {
     public List<Entries> getEntriesFromTransactionId(String id) {
         return er.getEntriesByTransactionId(id);
     }
-
-    public void deleteEntriesWithSameTransactionId(List<Entries> entries, String transactionId){
-        for(Entries entry : entries){
-            if(entry.getTransactionId().equalsIgnoreCase(transactionId)){
-                er.delete(entry);
-            }
-        }
-    }
-
 
 }
