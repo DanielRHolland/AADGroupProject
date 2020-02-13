@@ -100,6 +100,7 @@ public class TransactionController {
         return sb.toString();
     }
 
+
     @GetMapping(value = "/g/n/{nNumber}")
     public List<Transaction> getTransactionFromNNumber(@PathVariable String nNumber){
         return sl.getTransactionFromNNumber(nNumber);
