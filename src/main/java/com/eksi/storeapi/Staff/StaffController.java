@@ -14,11 +14,6 @@ public class StaffController {
     @Autowired
     private StaffService ul = ApplicationContext.staffService();
 
-//    @GetMapping(value = "/g/{id}")
-//    public Staff getStaff(@PathVariable("id") String id){
-//        return ul.getStaffMember(id);
-//    }
-
     @GetMapping(value = "g/{nNumber}")
     public Staff getStaff(@PathVariable ("nNumber")String nNumber){
         Staff staff = ul.getStaffMember(nNumber);

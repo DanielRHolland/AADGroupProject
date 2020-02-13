@@ -3,6 +3,7 @@ package com.eksi.storeapi.Transactions;
 import com.eksi.storeapi.ApplicationContext;
 import com.eksi.storeapi.Entries.Entries;
 import com.eksi.storeapi.Entries.EntriesService;
+import com.eksi.storeapi.Products.Product;
 import com.eksi.storeapi.Products.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -43,6 +44,46 @@ public class TransactionController {
     public List<Transaction> getTransactionLog(@PathVariable("dateFrom") long dateFrom, @PathVariable("currentDate") long currentDate){
         return sl.getTransactionLog(dateFrom, currentDate);
     }
+
+    @GetMapping(value = "/report/csv/{from}/{to}")
+    @ResponseBody
+    public String getTransactionReportAsCSV(@PathVariable("from") long from, @PathVariable("to") long to, HttpServletResponse response){
+        response.setContentType("text/csv; charset=utf-8");
+        response.setHeader("Content-disposition", "attachment;filename=transactionReport.csv");
+        StringBuilder sb = new StringBuilder();
+        sb.append("BudgetCode,No. of Transactions,Total spend\n");
+        for(Transaction tx : getTransactionLog(from, to)){
+            sb.append(tx.getBudgetCode());
+            sb.append(',');
+            int i = 0;
+            String productId = null;
+            int quantity = 0;
+            double totalCost = 0;
+            for(Entries te : el.getEntriesFromTransactionId(tx.getTransactionId())){
+                i++;
+                productId = te.getProductId();
+                quantity = te.getQuantity();
+                Product p = pl.getProduct(productId);
+                double cost = p.getCostPrice();
+                double totalSpend = (cost * quantity);
+                totalCost = (totalCost+totalSpend);
+            }
+            if(productId !=null){
+                sb.append(i);
+                sb.append(",");
+                sb.append(totalCost + "\n");
+            }else{
+                sb.append("No transactions for id:" + tx.getTransactionId() + "\n");
+            }
+        }
+        sb.append("\n");
+        return sb.toString();
+    }
+
+//    1. Get transactions for the budget code between the two dates.
+//    2. Get entries for each transaction.
+//        3. Multiply product cost by quantity for each entry
+//    4. Add up total for the budget code
 
     @GetMapping(value = "/csv/{from}/{to}")
     @ResponseBody
