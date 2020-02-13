@@ -47,15 +47,10 @@ public class TransactionController {
     @GetMapping(value = "/csv/{from}/{to}")
     @ResponseBody
     public String getTransactionLogAsCSV(@PathVariable("from") long from, @PathVariable("to") long to, HttpServletResponse response) {
-        // Set headers (CSV type)
-        response.setContentType("text/csv; charset=utf-8"); // Return CSV type
-        response.setHeader("Content-disposition", "attachment;filename=transactions.csv"); // Treat as file download
-
-        // Build CSV data
+        response.setContentType("text/csv; charset=utf-8");
+        response.setHeader("Content-disposition", "attachment;filename=transactions.csv");
         StringBuilder sb = new StringBuilder();
-        sb.append("Transaction ID,Budget Code,nNumber,UNIX Timestamp\n"); // Column names
-
-        // Add data
+        sb.append("Transaction ID,Budget Code,nNumber,UNIX Timestamp\n");
         for (Transaction tx : getTransactionLog(from, to)) {
             sb.append(tx.getTransactionId());
             sb.append(',');
@@ -66,9 +61,13 @@ public class TransactionController {
             sb.append(tx.getTimeStamp());
             sb.append('\n');
         }
-
-        // Return data
         return sb.toString();
+    }
+
+    @GetMapping(value = "/g/n/{nNumber}")
+    public Transaction getTransactionFromNNumber(@PathVariable String nNumber){
+        Transaction t = new Transaction();
+        return t;
     }
 
     @DeleteMapping(value = "/d/{id}")

@@ -12,4 +12,5 @@ public interface TransactionService {
     List getAllTransaction();
     List<Transaction> getTransactionLog(long dateFrom, long currentDate);
     void deleteById(String id) throws IOException;
+    Transaction getTransaction(String id);
 }

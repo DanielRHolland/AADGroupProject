@@ -2,6 +2,7 @@ package com.eksi.storeapi.Transactions;
 
 import com.eksi.storeapi.Entries.Entries;
 import com.eksi.storeapi.Entries.EntriesRepository;
+import com.eksi.storeapi.Products.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,11 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public void deleteById(String id) throws IOException{
         tr.deleteById(id);
+    }
+
+    @Override
+    public Transaction getTransaction(String id){
+        return tr.findById(id).orElse(null);
     }
 
     public List getAllTransaction(){
