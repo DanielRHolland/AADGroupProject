@@ -95,7 +95,7 @@ public class TransactionController {
             pl.updateProductQuantity(entryVar.getProductId(), entryVar.getQuantity());
         }
 
-        el.update(entry);
+        el.update(entry, transactionId);
         return entry;
     }
 

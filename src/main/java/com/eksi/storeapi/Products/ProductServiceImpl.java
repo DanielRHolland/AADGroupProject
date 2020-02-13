@@ -30,11 +30,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List getAllProducts(String name, Boolean order){
         if (order ==Boolean.TRUE){
-
             return (List)pr.findByNameASC(name);
         }
         else{
-
             return (List)pr.findByNameDSC(name);
         }
     }
