@@ -13,8 +13,8 @@ public interface ProductRepository extends CrudRepository<Product, String> {
     void deleteById(String id);
 
     @Query("select p from Product p where p.name like %?1% or p.id like %?1% or p.description like %?1% ORDER BY p.name ASC")
-    List<Product> findByNameASC(String name);
+    List<Product> findByNameASC(String st);
 
     @Query("select p from Product p where p.name like %?1% or p.id like %?1% or p.description like %?1% ORDER BY p.name desc ")
-    List<Product> findByNameDSC(String name);
+    List<Product> findByNameDSC(String st);
 }

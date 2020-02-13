@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -28,12 +27,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List getAllProducts(String name, Boolean order){
-        if (order ==Boolean.TRUE){
-            return (List)pr.findByNameASC(name);
+    public List getAllProducts(String st, Boolean asc){
+        if (asc ==Boolean.TRUE){
+
+            return (List)pr.findByNameASC(st);
         }
         else{
-            return (List)pr.findByNameDSC(name);
+
+            return (List)pr.findByNameDSC(st);
         }
     }
 
@@ -42,9 +43,4 @@ public class ProductServiceImpl implements ProductService {
         pr.deleteById(id);
     }
 
-    public String updateProductQuantity(String productId, int quantity){
-        Product p = getProduct(productId);
-        p.setQuantity(p.getQuantity() - quantity);
-        return "product/quantity/updated";
-    }
 }
