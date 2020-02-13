@@ -27,14 +27,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List getAllProducts(String name, Boolean order){
-        if (order ==Boolean.TRUE){
+    public List getAllProducts(String st, Boolean asc){
+        if (asc ==Boolean.TRUE){
 
-            return (List)pr.findByNameASC(name);
+            return (List)pr.findByNameASC(st);
         }
         else{
 
-            return (List)pr.findByNameDSC(name);
+            return (List)pr.findByNameDSC(st);
         }
     }
 
