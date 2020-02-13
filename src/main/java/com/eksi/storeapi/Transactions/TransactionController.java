@@ -80,11 +80,6 @@ public class TransactionController {
         return sb.toString();
     }
 
-//    1. Get transactions for the budget code between the two dates.
-//    2. Get entries for each transaction.
-//        3. Multiply product cost by quantity for each entry
-//    4. Add up total for the budget code
-
     @GetMapping(value = "/csv/{from}/{to}")
     @ResponseBody
     public String getTransactionLogAsCSV(@PathVariable("from") long from, @PathVariable("to") long to, HttpServletResponse response) {
