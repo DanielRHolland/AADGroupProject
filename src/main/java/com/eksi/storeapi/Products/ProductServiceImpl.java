@@ -43,4 +43,10 @@ public class ProductServiceImpl implements ProductService {
         pr.deleteById(id);
     }
 
+    public String updateProductQuantity(String productId, int quantity){
+        Product p = getProduct(productId);
+        p.setQuantity(p.getQuantity() - quantity);
+        return "product/quantity/updated";
+    }
+
 }
