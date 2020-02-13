@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping(value = "/product")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -25,9 +26,10 @@ public class ProductController {
         return ps.getProduct(product_id);
     }
 
+    //changed this
     @GetMapping(value = "/l")
-    public List getProducts(){
-        return ps.getAllProducts();
+    public List getProducts(@RequestParam Optional<String> name){
+        return ps.getAllProducts(name.orElse("_"));
     }
 
     @DeleteMapping(value = "/d/{id}")
@@ -35,5 +37,7 @@ public class ProductController {
         ps.deleteById(id);
         return "product/delete/success";
     }
+
+
 
 }
