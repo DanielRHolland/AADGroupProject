@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List getAllProducts(String st, Boolean asc){
-        if (asc ==Boolean.TRUE){
+        if (asc == Boolean.TRUE){
 
             return (List)pr.findByNameASC(st);
         }

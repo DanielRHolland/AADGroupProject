@@ -17,8 +17,8 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public Staff getStaffMember(String id){
-        return cr.findById(id).orElse(null);
+    public Staff getStaffMember(String nNumber){
+        return cr.findStaffByUsername(nNumber);
     }
 
     @Override

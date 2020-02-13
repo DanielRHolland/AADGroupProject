@@ -25,8 +25,6 @@ public class ProductController {
     public Product getProduct(@PathVariable("id") String product_id){
         return ps.getProduct(product_id);
     }
-
-    //changed this
     @GetMapping(value = "/l")
     public List getProducts(@RequestParam Optional<String> st,
                             @RequestParam Optional<Boolean> asc){

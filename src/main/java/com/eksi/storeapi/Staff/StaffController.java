@@ -14,9 +14,19 @@ public class StaffController {
     @Autowired
     private StaffService ul = ApplicationContext.staffService();
 
-    @GetMapping(value = "/g/{id}")
-    public Staff getStaff(@PathVariable("id") String id){
-        return ul.getStaffMember(id);
+//    @GetMapping(value = "/g/{id}")
+//    public Staff getStaff(@PathVariable("id") String id){
+//        return ul.getStaffMember(id);
+//    }
+
+    @GetMapping(value = "g/{nNumber}")
+    public Staff getStaff(@PathVariable ("nNumber")String nNumber){
+        Staff staff = ul.getStaffMember(nNumber);
+        Staff s = new Staff();
+        s.setId(staff.getId());
+        s.setPrivLevel(staff.getPrivLevel());
+        s.setNNumber(staff.getNNumber());
+        return s;
     }
 
     @PostMapping(value = "/l")
