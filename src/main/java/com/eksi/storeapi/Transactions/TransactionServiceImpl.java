@@ -47,4 +47,8 @@ public class TransactionServiceImpl implements TransactionService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Transaction> getTransactionFromNNumber(String nNumber) {
+        return tr.findTransactionBynNumber(nNumber);
+    }
 }

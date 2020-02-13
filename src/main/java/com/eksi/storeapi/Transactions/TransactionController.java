@@ -65,9 +65,8 @@ public class TransactionController {
     }
 
     @GetMapping(value = "/g/n/{nNumber}")
-    public Transaction getTransactionFromNNumber(@PathVariable String nNumber){
-        Transaction t = new Transaction();
-        return t;
+    public List<Transaction> getTransactionFromNNumber(@PathVariable String nNumber){
+        return sl.getTransactionFromNNumber(nNumber);
     }
 
     @DeleteMapping(value = "/d/{id}")

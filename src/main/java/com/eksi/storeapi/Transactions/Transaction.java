@@ -12,7 +12,7 @@ public class Transaction {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "transaction_id")
     private String id;
-    @Column(name = "nNumber")
+    @Column(name = "n_Number")
     private String nNumber;
     @Column(name = "budget_code")
     private String budgetCode;
