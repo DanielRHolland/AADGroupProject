@@ -8,4 +8,5 @@ public interface ProductService {
     List getAllProducts();
     Product getProduct(String id);
     void deleteById(String id) throws IOException;
+    String updateProductQuantity(String productId, int quantity);
 }

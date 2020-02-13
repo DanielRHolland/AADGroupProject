@@ -41,16 +41,4 @@ public class TransactionServiceImpl implements TransactionService {
                 .collect(Collectors.toList());
     }
 
-    public File getTransactionLogAsCSV(long from, long to){
-        File file = new File("transactions.csv");
-        try {
-            FileWriter fr = new FileWriter(file, true);
-            String string = getTransactionLog(from,to).toString();
-            fr.write(string);
-            fr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
-    }
 }

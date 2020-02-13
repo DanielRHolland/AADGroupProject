@@ -3,6 +3,7 @@ package com.eksi.storeapi.Transactions;
 import com.eksi.storeapi.ApplicationContext;
 import com.eksi.storeapi.Entries.Entries;
 import com.eksi.storeapi.Entries.EntriesService;
+import com.eksi.storeapi.Products.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +29,10 @@ public class TransactionController {
     @Autowired
     private EntriesService el = ApplicationContext.entriesService();
 
+    @Autowired
+    private ProductService pl = ApplicationContext.productsService();
+
+
     @PostMapping(value = "/s")
     public Transaction saveTransaction(@RequestBody Transaction transaction) throws IOException {
         sl.update(transaction);
@@ -39,17 +45,30 @@ public class TransactionController {
     }
 
     @GetMapping(value = "/csv/{from}/{to}")
-    public ResponseEntity<InputStreamResource> getTransactionLogAsCSV(@PathVariable("from") long from, @PathVariable("to") long to){
-        HttpHeaders respHeaders = new HttpHeaders();
-        respHeaders.setContentLength(12345678);
-        respHeaders.setContentDispositionFormData("attachment", "transactionLog.csv");
-        InputStreamResource isr = null;
-        try {
-            isr = new InputStreamResource(new FileInputStream(sl.getTransactionLogAsCSV(from, to)));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    @ResponseBody
+    public String getTransactionLogAsCSV(@PathVariable("from") long from, @PathVariable("to") long to, HttpServletResponse response) {
+        // Set headers (CSV type)
+        response.setContentType("text/csv; charset=utf-8"); // Return CSV type
+        response.setHeader("Content-disposition", "attachment;filename=transactions.csv"); // Treat as file download
+
+        // Build CSV data
+        StringBuilder sb = new StringBuilder();
+        sb.append("Transaction ID,Budget Code,nNumber,UNIX Timestamp\n"); // Column names
+
+        // Add data
+        for (Transaction tx : getTransactionLog(from, to)) {
+            sb.append(tx.getTransactionId());
+            sb.append(',');
+            sb.append(tx.getBudgetCode());
+            sb.append(',');
+            sb.append(tx.getnNumber());
+            sb.append(',');
+            sb.append(tx.getTimeStamp());
+            sb.append('\n');
         }
-        return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+
+        // Return data
+        return sb.toString();
     }
 
     @DeleteMapping(value = "/d/{id}")
@@ -73,7 +92,9 @@ public class TransactionController {
     public List<Entries> saveEntry(@RequestBody List<Entries> entry, @PathVariable String transactionId) throws IOException {
         for(Entries entryVar : entry){
             entryVar.setTransactionId(transactionId);
+            pl.updateProductQuantity(entryVar.getProductId(), entryVar.getQuantity());
         }
+
         el.update(entry);
         return entry;
     }
