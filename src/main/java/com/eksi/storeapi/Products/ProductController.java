@@ -28,8 +28,9 @@ public class ProductController {
 
     //changed this
     @GetMapping(value = "/l")
-    public List getProducts(@RequestParam Optional<String> name){
-        return ps.getAllProducts(name.orElse("_"));
+    public List getProducts(@RequestParam Optional<String> name,
+                            @RequestParam Optional<Boolean> order){
+        return ps.getAllProducts(name.orElse("_"), order.orElse(Boolean.TRUE));
     }
 
     @DeleteMapping(value = "/d/{id}")
