@@ -1,6 +1,9 @@
 package com.eksi.storeapi.Products;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import net.bytebuddy.TypeCache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +28,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List getAllProducts(){
-        return (List)pr.findAll();
+    public List getAllProducts(String name, Boolean order){
+        if (order ==Boolean.TRUE){
+
+            return (List)pr.findByNameASC(name);
+        }
+        else{
+
+            return (List)pr.findByNameDSC(name);
+        }
     }
 
     @Override

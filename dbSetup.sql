@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `budget_codes` (
 
 -- Dumping structure for table aad.entries
 CREATE TABLE IF NOT EXISTS `entries` (
+  `entry_id` varchar(50) DEFAULT NULL,
   `transaction_id` varchar(50) DEFAULT NULL,
   `product_id` varchar(50) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL
