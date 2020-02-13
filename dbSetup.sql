@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `products` (
 CREATE TABLE IF NOT EXISTS `staff` (
   `staff_id` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `passwordHash` varchar(45) NOT NULL,
-  `privLevel` int(11) NOT NULL,
+  `password_hash` varchar(45) NOT NULL,
+  `priv_level` int(11) NOT NULL,
   PRIMARY KEY (`staff_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
