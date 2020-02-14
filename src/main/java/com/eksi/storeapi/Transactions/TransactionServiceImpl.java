@@ -2,6 +2,7 @@ package com.eksi.storeapi.Transactions;
 
 import com.eksi.storeapi.Entries.Entries;
 import com.eksi.storeapi.Entries.EntriesRepository;
+import com.eksi.storeapi.Products.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,11 @@ public class TransactionServiceImpl implements TransactionService {
         tr.deleteById(id);
     }
 
+    @Override
+    public Transaction getTransaction(String id){
+        return tr.findById(id).orElse(null);
+    }
+
     public List getAllTransaction(){
         return (List)tr.findAll();
     }
@@ -41,16 +47,8 @@ public class TransactionServiceImpl implements TransactionService {
                 .collect(Collectors.toList());
     }
 
-    public File getTransactionLogAsCSV(long from, long to){
-        File file = new File("transactions.csv");
-        try {
-            FileWriter fr = new FileWriter(file, true);
-            String string = getTransactionLog(from,to).toString();
-            fr.write(string);
-            fr.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
+    @Override
+    public List<Transaction> getTransactionFromNNumber(String nNumber) {
+        return tr.findTransactionBynNumber(nNumber);
     }
 }

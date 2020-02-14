@@ -1,6 +1,9 @@
 package com.eksi.storeapi.Products;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import net.bytebuddy.TypeCache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +27,26 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List getAllProducts(){
-        return (List)pr.findAll();
+    public List getAllProducts(String st, Boolean asc){
+        if (asc == Boolean.TRUE){
+
+            return (List)pr.findByNameASC(st);
+        }
+        else{
+
+            return (List)pr.findByNameDSC(st);
+        }
     }
 
     @Override
     public void deleteById(String id) throws IOException{
         pr.deleteById(id);
+    }
+
+    public String updateProductQuantity(String productId, int quantity){
+        Product p = getProduct(productId);
+        p.setQuantity(p.getQuantity() - quantity);
+        return "product/quantity/updated";
     }
 
 }

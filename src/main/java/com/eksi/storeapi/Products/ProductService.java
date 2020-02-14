@@ -5,7 +5,8 @@ import java.util.List;
 
 public interface ProductService {
     Product update(Product p) throws IOException;
-    List getAllProducts();
+    List getAllProducts(String st, Boolean asc);
     Product getProduct(String id);
     void deleteById(String id) throws IOException;
+    String updateProductQuantity(String productId, int quantity);
 }

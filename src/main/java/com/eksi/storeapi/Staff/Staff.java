@@ -1,12 +1,14 @@
 package com.eksi.storeapi.Staff;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Staff")
 public class Staff {
-
-    @Id
+    @Id @GeneratedValue(generator="system-uuid")
+    @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "staff_id")
     private String id;
     private String username;
@@ -21,19 +23,19 @@ public class Staff {
         this.privLevel = privLevel;
     }
 
-    public String getUsername() {
+    public String getNNumber() {
         return username;
     }
 
-    public String getnNumber() {
+    public String getId() {
         return this.id;
     }
 
-    public void setnNumber(String nNumber) {
+    public void setId(String nNumber) {
         this.id = nNumber;
     }
 
-    public void setUsername(String username) {
+    public void setNNumber(String username) {
         this.username = username;
     }
 

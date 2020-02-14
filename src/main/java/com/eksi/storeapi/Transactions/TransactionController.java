@@ -3,6 +3,8 @@ package com.eksi.storeapi.Transactions;
 import com.eksi.storeapi.ApplicationContext;
 import com.eksi.storeapi.Entries.Entries;
 import com.eksi.storeapi.Entries.EntriesService;
+import com.eksi.storeapi.Products.Product;
+import com.eksi.storeapi.Products.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,9 +30,14 @@ public class TransactionController {
     @Autowired
     private EntriesService el = ApplicationContext.entriesService();
 
+    @Autowired
+    private ProductService pl = ApplicationContext.productsService();
+
+
     @PostMapping(value = "/s")
     public Transaction saveTransaction(@RequestBody Transaction transaction) throws IOException {
-        return sl.update(transaction);
+        sl.update(transaction);
+        return transaction;
     }
 
     @GetMapping(value = "/l/{dateFrom}/{currentDate}")
@@ -37,18 +45,65 @@ public class TransactionController {
         return sl.getTransactionLog(dateFrom, currentDate);
     }
 
-    @GetMapping(value = "/csv/{from}/{to}")
-    public ResponseEntity<InputStreamResource> getTransactionLogAsCSV(@PathVariable("from") long from, @PathVariable("to") long to){
-        HttpHeaders respHeaders = new HttpHeaders();
-        respHeaders.setContentLength(12345678);
-        respHeaders.setContentDispositionFormData("attachment", "transactionLog.csv");
-        InputStreamResource isr = null;
-        try {
-            isr = new InputStreamResource(new FileInputStream(sl.getTransactionLogAsCSV(from, to)));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+    @GetMapping(value = "/report/csv/{from}/{to}")
+    @ResponseBody
+    public String getTransactionReportAsCSV(@PathVariable("from") long from, @PathVariable("to") long to, HttpServletResponse response){
+        response.setContentType("text/csv; charset=utf-8");
+        response.setHeader("Content-disposition", "attachment;filename=transactionReport.csv");
+        StringBuilder sb = new StringBuilder();
+        sb.append("BudgetCode,No. of Transactions,Total spend\n");
+        for(Transaction tx : getTransactionLog(from, to)){
+            sb.append(tx.getBudgetCode());
+            sb.append(',');
+            int i = 0;
+            String productId = null;
+            int quantity = 0;
+            double totalCost = 0;
+            for(Entries te : el.getEntriesFromTransactionId(tx.getTransactionId())){
+                i++;
+                productId = te.getProductId();
+                quantity = te.getQuantity();
+                Product p = pl.getProduct(productId);
+                double cost = p.getCostPrice();
+                double totalSpend = (cost * quantity);
+                totalCost = (totalCost+totalSpend);
+            }
+            if(productId !=null){
+                sb.append(i);
+                sb.append(",");
+                sb.append(totalCost + "\n");
+            }else{
+                sb.append("No transactions for id:" + tx.getTransactionId() + "\n");
+            }
         }
-        return new ResponseEntity<InputStreamResource>(isr, respHeaders, HttpStatus.OK);
+        sb.append("\n");
+        return sb.toString();
+    }
+
+    @GetMapping(value = "/csv/{from}/{to}")
+    @ResponseBody
+    public String getTransactionLogAsCSV(@PathVariable("from") long from, @PathVariable("to") long to, HttpServletResponse response) {
+        response.setContentType("text/csv; charset=utf-8");
+        response.setHeader("Content-disposition", "attachment;filename=transactions.csv");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Transaction ID,Budget Code,nNumber,UNIX Timestamp\n");
+        for (Transaction tx : getTransactionLog(from, to)) {
+            sb.append(tx.getTransactionId());
+            sb.append(',');
+            sb.append(tx.getBudgetCode());
+            sb.append(',');
+            sb.append(tx.getnNumber());
+            sb.append(',');
+            sb.append(tx.getTimeStamp());
+            sb.append('\n');
+        }
+        return sb.toString();
+    }
+
+
+    @GetMapping(value = "/g/n/{nNumber}")
+    public List<Transaction> getTransactionFromNNumber(@PathVariable String nNumber){
+        return sl.getTransactionFromNNumber(nNumber);
     }
 
     @DeleteMapping(value = "/d/{id}")
@@ -72,7 +127,9 @@ public class TransactionController {
     public List<Entries> saveEntry(@RequestBody List<Entries> entry, @PathVariable String transactionId) throws IOException {
         for(Entries entryVar : entry){
             entryVar.setTransactionId(transactionId);
+            pl.updateProductQuantity(entryVar.getProductId(), entryVar.getQuantity());
         }
+
         el.update(entry, transactionId);
         return entry;
     }
