@@ -33,8 +33,8 @@ Database
 2. Run dbSetup.sql on the server
 
 1. `git clone https://github.com/DanielRHolland/AADGroupProject.git` or download zip file.
-2. Open folder `cd AADGroupProject`
-3. Open file 
+2. Open folder `AADGroupProject`
+3. Open file `/src/main/resources`, set MySQL database username and password
 4. Run Maven Install `mvn install`
 5. Open target folder `cd target`
 6. Run jar file `java - jar `
