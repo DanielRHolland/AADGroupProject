@@ -24,21 +24,35 @@ public class StaffController {
         return s;
     }
 
-    @PostMapping(value = "/l")
+    @GetMapping("/g/priv/{nNumber}")
+    public int getPrivNumber(@PathVariable("nNumber")String nNumber){
+        if(ul.getPrivNumber(nNumber) != -1){
+            return ul.getPrivNumber(nNumber);
+        }else{
+            return -1;
+        }
+    }
+
+    @GetMapping("g/password/{nNumber},{password}")
+    public boolean checkPassword(@PathVariable("nNumber") String nNumber, @PathVariable("password") String password){
+        return ul.checkPassword(nNumber,password);
+    }
+
+    @GetMapping(value = "/l")
     public List getAllStaff(){
         return ul.getAllStaff();
     }
 
     @PostMapping(value = "/s")
-    public String saveStaff(@RequestBody Staff staff) throws IOException {
+    public Staff saveStaff(@RequestBody Staff staff) throws IOException {
         ul.update(staff);
-        return "staff/save/success";
+        return staff;
     }
 
     @DeleteMapping(value = "/d/{id}")
-    public String deleteStaff(@PathVariable String id) throws IOException{
+    public Staff deleteStaff(@PathVariable String id) throws IOException{
         ul.deleteById(id);
-        return "staff/delete/success";
+        return getStaff(id);
     }
 }
 

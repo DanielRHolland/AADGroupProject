@@ -21,9 +21,6 @@ public class Product {
     private String imageUrl;
     @Column(name = "location_name")
     private String locationName;
-
-//    private List<Warning> warnings;
-
     @Column(name = "expiry_date")
     private Long expiryDate;
     @Column(name = "cost_price")
@@ -59,7 +56,6 @@ public class Product {
     public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
-
 
     public Long getExpiryDate() {
         return expiryDate;

@@ -8,4 +8,6 @@ public interface StaffService {
     Staff getStaffMember(String id);
     void deleteById(String id) throws IOException;
     List getAllStaff();
+    int getPrivNumber(String nNumber);
+    boolean checkPassword(String nNumber, String password);
 }

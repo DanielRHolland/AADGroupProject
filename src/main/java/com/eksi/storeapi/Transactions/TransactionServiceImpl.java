@@ -36,6 +36,10 @@ public class TransactionServiceImpl implements TransactionService {
         return tr.findById(id).orElse(null);
     }
 
+    public List<Transaction> getUserTransactions(String nNumber){
+        return tr.findTransactionBynNumber(nNumber);
+    }
+
     public List getAllTransaction(){
         return (List)tr.findAll();
     }

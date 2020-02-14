@@ -1,6 +1,7 @@
 package com.eksi.storeapi.Products;
 
 import com.eksi.storeapi.ApplicationContext;
+import com.eksi.storeapi.Staff.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +26,7 @@ public class ProductController {
     public Product getProduct(@PathVariable("id") String product_id){
         return ps.getProduct(product_id);
     }
+
     @GetMapping(value = "/l")
     public List getProducts(@RequestParam Optional<String> st,
                             @RequestParam Optional<Boolean> asc){
@@ -32,9 +34,9 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "/d/{id}")
-    public String deleteProduct(@PathVariable String id) throws IOException {
+    public Product deleteProduct(@PathVariable String id) throws IOException {
         ps.deleteById(id);
-        return "product/delete/success";
+        return getProduct(id);
     }
 
 

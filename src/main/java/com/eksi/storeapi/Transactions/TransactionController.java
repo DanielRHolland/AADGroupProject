@@ -107,9 +107,14 @@ public class TransactionController {
     }
 
     @DeleteMapping(value = "/d/{id}")
-    public String deleteStaff(@PathVariable String id) throws IOException{
+    public String deleteTransaction(@PathVariable String id) throws IOException{
         sl.deleteById(id);
         return "{ \"status\" : \"transaction/delete/success\"}";
+    }
+
+    @GetMapping(value = "/g/userT/{nNumber}")
+    public List<Transaction> getUserTransactions(@PathVariable String nNumber){
+        return sl.getUserTransactions(nNumber);
     }
 
     @GetMapping(value = "/l")
