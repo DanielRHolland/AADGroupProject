@@ -24,6 +24,20 @@ public class StaffController {
         return s;
     }
 
+    @GetMapping("/g/priv/{nNumber}")
+    public int getPrivNumber(@PathVariable("nNumber")String nNumber){
+        if(ul.getPrivNumber(nNumber) != -1){
+            return ul.getPrivNumber(nNumber);
+        }else{
+            return -1;
+        }
+    }
+
+    @GetMapping("g/password/{nNumber},{password}")
+    public boolean checkPassword(@PathVariable("nNumber") String nNumber, @PathVariable("password") String password){
+        return ul.checkPassword(nNumber,password);
+    }
+
     @PostMapping(value = "/l")
     public List getAllStaff(){
         return ul.getAllStaff();

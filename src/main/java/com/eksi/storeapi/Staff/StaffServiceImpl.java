@@ -21,6 +21,15 @@ public class StaffServiceImpl implements StaffService {
         return cr.findStaffByUsername(nNumber);
     }
 
+    public boolean checkPassword(String nNumber, String password){
+        Staff s = getStaffMember(nNumber);
+        if(s.getPasswordHash().equals(password)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     @Override
     public List getAllStaff(){
         return (List)cr.findAll();
@@ -31,4 +40,12 @@ public class StaffServiceImpl implements StaffService {
         cr.deleteStaffById(id);
     }
 
+    public int getPrivNumber(String nNumber){
+        Staff f = getStaffMember(nNumber);
+        if(!(f.getPrivLevel() <= -1)){
+            return f.getPrivLevel();
+        }else{
+            return -1;
+        }
+    }
 }
