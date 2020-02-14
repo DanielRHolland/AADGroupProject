@@ -36,8 +36,7 @@ public class TransactionController {
 
     @PostMapping(value = "/s")
     public Transaction saveTransaction(@RequestBody Transaction transaction) throws IOException {
-        sl.update(transaction);
-        return transaction;
+        return sl.update(transaction);
     }
 
     @GetMapping(value = "/l/{dateFrom}/{currentDate}")
