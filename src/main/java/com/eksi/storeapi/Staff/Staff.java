@@ -23,7 +23,7 @@ public class Staff {
         this.privLevel = privLevel;
     }
 
-    public String getNNumber() {
+    public String getUsername() {
         return username;
     }
 
@@ -35,7 +35,7 @@ public class Staff {
         this.id = nNumber;
     }
 
-    public void setNNumber(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
