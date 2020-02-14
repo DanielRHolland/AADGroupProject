@@ -107,7 +107,7 @@ public class TransactionController {
     }
 
     @DeleteMapping(value = "/d/{id}")
-    public String deleteStaff(@PathVariable String id) throws IOException{
+    public String deleteTransaction(@PathVariable String id) throws IOException{
         sl.deleteById(id);
         return "transaction/delete/success";
     }

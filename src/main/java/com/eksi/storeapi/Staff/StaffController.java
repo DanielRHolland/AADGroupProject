@@ -38,21 +38,21 @@ public class StaffController {
         return ul.checkPassword(nNumber,password);
     }
 
-    @PostMapping(value = "/l")
+    @GetMapping(value = "/l")
     public List getAllStaff(){
         return ul.getAllStaff();
     }
 
     @PostMapping(value = "/s")
-    public String saveStaff(@RequestBody Staff staff) throws IOException {
+    public Staff saveStaff(@RequestBody Staff staff) throws IOException {
         ul.update(staff);
-        return "staff/save/success";
+        return staff;
     }
 
     @DeleteMapping(value = "/d/{id}")
-    public String deleteStaff(@PathVariable String id) throws IOException{
+    public Staff deleteStaff(@PathVariable String id) throws IOException{
         ul.deleteById(id);
-        return "staff/delete/success";
+        return getStaff(id);
     }
 }
 
