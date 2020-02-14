@@ -20,7 +20,7 @@ public class StaffController {
         Staff s = new Staff();
         s.setId(staff.getId());
         s.setPrivLevel(staff.getPrivLevel());
-        s.setNNumber(staff.getNNumber());
+        s.setUsername(staff.getUsername());
         return s;
     }
 
