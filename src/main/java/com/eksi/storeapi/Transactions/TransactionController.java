@@ -112,6 +112,11 @@ public class TransactionController {
         return "transaction/delete/success";
     }
 
+    @GetMapping(value = "/g/userT/{nNumber}")
+    public List<Transaction> getUserTransactions(@PathVariable String nNumber){
+        return sl.getUserTransactions(nNumber);
+    }
+
     @GetMapping(value = "/l")
     public List getAllTransactions(){
         return (List) sl.getAllTransaction();

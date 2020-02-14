@@ -14,4 +14,5 @@ public interface TransactionService {
     void deleteById(String id) throws IOException;
     Transaction getTransaction(String id);
     List<Transaction> getTransactionFromNNumber(String nNumber);
+    List<Transaction> getUserTransactions(String nNumber);
 }
