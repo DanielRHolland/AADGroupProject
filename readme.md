@@ -31,6 +31,9 @@ Database
 
 1. Setup MySQL Server
 2. Run dbSetup.sql on the server
+3. Run sql `insert into staff values ('ADMIN','ADMIN','ADMIN',1000);` to create an admin account with password and username both "ADMIN".
+
+REST Server
 
 1. `git clone https://github.com/DanielRHolland/AADGroupProject.git` or download zip file.
 2. Open folder `AADGroupProject`
