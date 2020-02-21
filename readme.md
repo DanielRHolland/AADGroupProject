@@ -40,5 +40,5 @@ REST Server
 3. Open file `/src/main/resources`, set MySQL database username and password
 4. Run Maven Install `mvn install`
 5. Open target folder `cd target`
-6. Run jar file `java - jar `
+6. Run jar file `java -jar `
 
